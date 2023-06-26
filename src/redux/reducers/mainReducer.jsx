@@ -10,7 +10,6 @@ export default function mainReducer(
       return { ...currentState, pokemon: action.pokemon };
 
     case "GET_USERS":
-      console.log("currentState", currentState.users);
       return { ...currentState, users: action.users };
 
     default:

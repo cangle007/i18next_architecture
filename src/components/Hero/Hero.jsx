@@ -1,15 +1,18 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import useUsersData from "../../redux/hooks/useDataProcess";
-import { useTranslation, Trans } from "react-i18next";
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import useUsersData from '../../redux/hooks/useDataProcess';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
   const { getUsersDataProcess, getHeroProcess } = useUsersData();
   const { t, i18n } = useTranslation();
-
-  const pokemonName = useSelector((state) => state.main.pokemon);
-  const userNames = useSelector((state) => state.main.users);
-  const heroName = useSelector((state) => state.hero.superHero);
+  const country =
+    document.querySelector('html').lang === 'en' ? 'America' : 'Vietnam';
+  const [currLang, setLang] = useState(country);
+  // const pokemonName = useSelector((state) => state.main.pokemon);
+  // const userNames = useSelector((state) => state.main.users);
+  // const heroName = useSelector((state) => state.hero.superHero);
+  const users = t('users', { returnObjects: true }); //this is how you map through i18next
 
   useEffect(() => {
     getUsersDataProcess();
@@ -21,27 +24,39 @@ const Hero = () => {
       <p>Hero COMPONENT</p>
       <button
         onClick={() => {
-          i18n.changeLanguage("en");
+          i18n.changeLanguage('en-US');
+          setLang('America');
         }}
       >
         ENGLISH
       </button>
       <button
         onClick={() => {
-          i18n.changeLanguage("vi");
+          i18n.changeLanguage('vi-VN');
+          setLang('Vietnam');
         }}
       >
         VIETNAMESE
       </button>
-      <div>{t("msg.welcome")}</div>
-      {/* <div>{t("msg.chao")}</div> */}
-
-      <div>pokemonName: {pokemonName}</div>
-      <div>superHero: {heroName}</div>
+      <div>{t('msg.welcome', { country: currLang })}</div>
+      <div>{t('about.translation')}</div>
+      <div>{t('home.context')}</div>
+      <h3>Users</h3>
       <div>
-        {userNames.map((obj) => {
+        {/* {t("users").map((name) => {
+          return <div>{name}</div>;
+        })} */}
+        {users.map((user, i) => (
+          <p key={i}>{user}</p>
+        ))}
+      </div>
+
+      {/* <div>pokemonName: {pokemonName}</div>
+      <div>superHero: {heroName}</div> */}
+      <div>
+        {/* {userNames.map((obj) => {
           return <div>{obj.name + " - " + obj.age}</div>;
-        })}
+        })} */}
       </div>
     </>
   );

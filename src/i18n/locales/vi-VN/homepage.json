@@ -1,0 +1,14 @@
+{
+  "users": ["Cang Vietnamese", "Binh Vietnamese", "Cuong Vietnamese"],
+  "msg": {
+    "welcome": "Chào mừng bạn đến {{country}}"
+  },
+  "about": {
+    "translation": "Về chúng tôi",
+    "notes": "Tiêu đề cho menu chính"
+  },
+  "home": {
+    "translation": "trang chủ",
+    "context": "Hiển thị trên trang web chính"
+  }
+}
