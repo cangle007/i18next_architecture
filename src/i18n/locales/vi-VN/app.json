@@ -1,0 +1,16 @@
+{
+  "header": {
+    "login": "đăng nhập",
+    "about": "về",
+    "career": "sự nghiệp"
+  },
+  "foeter": {
+    "callUs": "gọi cho chúng tôi at xxx-xxx-xxxx",
+    "copyright": "Tất cả các quyền"
+  },
+  "languages": {
+    "currentLang": "English",
+    "en-US": "English",
+    "vi-VN": "Vietnamese"
+  }
+}

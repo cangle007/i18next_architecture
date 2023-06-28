@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import useUsersData from '../../redux/hooks/useDataProcess';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
 const Hero = () => {
   const { getUsersDataProcess, getHeroProcess } = useUsersData();
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation(['app', 'common', 'messages']);
   const country =
     document.querySelector('html').lang === 'en' ? 'America' : 'Vietnam';
   const [currLang, setLang] = useState(country);
   // const pokemonName = useSelector((state) => state.main.pokemon);
   // const userNames = useSelector((state) => state.main.users);
   // const heroName = useSelector((state) => state.hero.superHero);
-  const users = t('users', { returnObjects: true }); //this is how you map through i18next
+  // const infoMsg = t('messages', { returnObjects: true }); //this is how you map through i18next
 
   useEffect(() => {
     getUsersDataProcess();
@@ -38,26 +38,29 @@ const Hero = () => {
       >
         VIETNAMESE
       </button>
-      <div>{t('msg.welcome', { country: currLang })}</div>
-      <div>{t('about.translation')}</div>
-      <div>{t('home.context')}</div>
-      <h3>Users</h3>
+      <h3>Header</h3>
+      <div>{t('header.login')}</div>
+      <div>{t('header.about')}</div>
+      <div>{t('header.career')}</div>
+
+      <h3>Company's Info</h3>
+      <div>{t('companyInfo.name')}</div>
+      <div>{t('companyInfo.location')}</div>
+      <div>{t('companyInfo.location_two')}</div>
+      <div>{t('companyInfo.contact')}</div>
+
+      <h3>Founders</h3>
       <div>
-        {/* {t("users").map((name) => {
-          return <div>{name}</div>;
-        })} */}
-        {users.map((user, i) => (
-          <p key={i}>{user}</p>
+        {t('founders', { returnObjects: true }).map((obj, i) => (
+          <p key={i}>{obj.name + ': ' + obj.title}</p>
         ))}
       </div>
 
-      {/* <div>pokemonName: {pokemonName}</div>
-      <div>superHero: {heroName}</div> */}
-      <div>
-        {/* {userNames.map((obj) => {
-          return <div>{obj.name + " - " + obj.age}</div>;
-        })} */}
-      </div>
+      <h3>About US</h3>
+      {/* <p>{t('messages:msg.welcome', { country: currLang })}</p> */}
+      <p>{t('msg.welcome', { country: currLang })}</p>
+      <p>{t('about.company')}</p>
+      <p>{t('about.founders')}</p>
     </>
   );
 };

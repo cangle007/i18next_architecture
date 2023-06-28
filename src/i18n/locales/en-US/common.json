@@ -1,0 +1,26 @@
+{
+  "founders": [
+    {
+      "name": "Binh Le",
+      "title": "CEO"
+    },
+    {
+      "name": "Jennifer Le",
+      "title": "DevOps"
+    },
+    {
+      "name": "Cuong Le",
+      "title": "DevOps Security"
+    },
+    {
+      "name": "Cang Le",
+      "title": "Frontend"
+    }
+  ],
+  "companyInfo": {
+    "name": "Hue Network",
+    "location": "San Jose, California",
+    "location_two": "Saigon, Vietnam",
+    "contact": "xxx-xxx-xxxx"
+  }
+}

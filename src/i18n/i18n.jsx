@@ -1,18 +1,28 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import enUSresources from './locales/en-US/homepage.json';
-import viVNresources from './locales/vi-VN/homepage.json';
+import enApp from './locales/en-US/app.json';
+import viApp from './locales/vi-VN/app.json';
+import enCommon from './locales/en-US/common.json';
+import viCommon from './locales/vi-VN/common.json';
+import enMessages from './locales/en-US/messages.json';
+import viMessages from './locales/vi-VN/messages.json';
 
-//TODO context can be dynamic based on user click
-//const context = require.context("./locales/en-US", true, /\.json$/);
+//TODO context viMessages be dynamic based on user click
+const enContext = require.context('./locales/en-US', true, /\.json$/);
+const viContext = require.context('./locales/vi-VN', true, /\.json$/);
+let enResources = {};
+let viResources = {};
 
-// let resources = {};
+enContext.keys().forEach((fileName) => {
+  const formattedName = fileName.replace('./', '').replace('.json', '');
+  enResources[formattedName] = enContext(fileName);
+});
 
-// context.keys().forEach((fileName) => {
-//   const formattedName = fileName.replace("./", "").replace(".json", "");
-//   resources[formattedName] = context(fileName);
-// });
+viContext.keys().forEach((fileName) => {
+  const formattedName = fileName.replace('./', '').replace('.json', '');
+  viResources[formattedName] = viContext(fileName);
+});
 
 i18n
   // detect user language
@@ -23,7 +33,10 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true,
+    debug: false,
+    ns: ['app', 'common', 'messages'],
+    defaultNS: 'app',
+    fallbackNS: 'common',
     fallbackLng: 'en-US',
     //lng: document.querySelector("html").lang, // if you're using a language detector, do not define the lng option
     supportedLngs: ['en-US', 'vi-VN'],
@@ -38,13 +51,21 @@ i18n
       useSuspense: false,
     },
     resources: {
-      'en-US': {
-        translation: enUSresources,
-      },
-      'vi-VN': {
-        translation: viVNresources,
-      },
+      'en-US': enResources,
+      // 'vi-VN': viResources,
     },
+    // resources: {
+    //   'en-US': {
+    //     app: enApp,
+    //     common: enCommon,
+    //     messages: enMessages,
+    //   },
+    //   'vi-VN': {
+    //     app: viApp,
+    //     common: viCommon,
+    //     messages: viMessages,
+    //   },
+    // },
   });
 
 export default i18n;

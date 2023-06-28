@@ -1,0 +1,9 @@
+{
+  "msg": {
+    "welcome": "welcome to {{country}}"
+  },
+  "about": {
+    "company": "hue network was found in 2022 in the basement of San Jose",
+    "founders": "We are group of engineers who love to code all day"
+  }
+}

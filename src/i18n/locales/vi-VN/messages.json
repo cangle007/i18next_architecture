@@ -1,0 +1,9 @@
+{
+  "msg": {
+    "welcome": "chào mừng bạn đến {{country}}"
+  },
+  "about": {
+    "company": "mạng hue được tìm thấy vào năm 2022 trong tầng hầm của San Jose",
+    "Founders": "Chúng tôi là nhóm kỹ sư thích viết mã cả ngày"
+  }
+}

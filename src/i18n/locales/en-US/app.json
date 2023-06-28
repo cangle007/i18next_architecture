@@ -1,0 +1,16 @@
+{
+  "header": {
+    "login": "sign in",
+    "about": "about us",
+    "career": "career"
+  },
+  "footer": {
+    "callUs": "Call us at xxx-xxx-xxxx",
+    "copyright": "All right reserved"
+  },
+  "languages": {
+    "currentLang": "English",
+    "en-US": "English",
+    "vi-VN": "Vietnamese"
+  }
+}
