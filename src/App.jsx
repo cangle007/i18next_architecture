@@ -4,6 +4,7 @@ import { setupStore } from './redux/setupStore';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import HomePageContainer from './containers/HomePageContainer';
+import HeaderPageContainer from './containers/HeaderPageContainer';
 import Loader from '../src/components/Loader/Loader';
 
 import { createBrowserHistory } from 'history';
@@ -19,6 +20,7 @@ const App = (props) => {
           <Router history={history}>
             <Routes>
               <Route exact path='/' element={<HomePageContainer />} />
+              <Route exact path='/header' element={<HeaderPageContainer />} />
             </Routes>
           </Router>
         </Suspense>

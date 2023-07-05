@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
 import useUsersData from '../../redux/hooks/useDataProcess';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
   const { getUsersDataProcess, getHeroProcess } = useUsersData();
   const { t, i18n } = useTranslation(['app', 'common', 'messages']);
+
   const country =
     document.querySelector('html').lang === 'en' ? 'America' : 'Vietnam';
   const [currLang, setLang] = useState(country);
@@ -52,15 +53,18 @@ const Hero = () => {
       <h3>Founders</h3>
       <div>
         {t('founders', { returnObjects: true }).map((obj, i) => (
-          <p key={i}>{obj.name + ': ' + obj.title}</p>
+          <p key={i}>{obj?.name + ': ' + obj?.title}</p>
         ))}
       </div>
 
       <h3>About US</h3>
-      {/* <p>{t('messages:msg.welcome', { country: currLang })}</p> */}
       <p>{t('msg.welcome', { country: currLang })}</p>
       <p>{t('about.company')}</p>
       <p>{t('about.founders')}</p>
+
+      <h3>Footer</h3>
+      <div>{t('footer.callUs')}</div>
+      <div>{t('footer.copyright')}</div>
     </>
   );
 };
